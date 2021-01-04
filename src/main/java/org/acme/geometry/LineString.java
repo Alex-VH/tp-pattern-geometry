@@ -43,4 +43,16 @@ public class LineString implements Geometry {
 			this.points.get(i).translate(x, y);
 		}
 	}
+	
+	
+	@Override
+	public Geometry clone() {
+		try {
+			Geometry clone = (LineString)super.clone();
+			return clone;
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+		
+	}
 }

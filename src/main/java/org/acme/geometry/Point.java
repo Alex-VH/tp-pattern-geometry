@@ -31,5 +31,17 @@ public class Point implements Geometry {
 		this.coordinate.setX(this.coordinate.getX() + x);
 		this.coordinate.setY(this.coordinate.getY() + y);
 	}
+	
+	
+	@Override
+	public Geometry clone() {
+		try {
+			Geometry clone = (Point)super.clone();
+			return clone;
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+		
+	}
 
 }
