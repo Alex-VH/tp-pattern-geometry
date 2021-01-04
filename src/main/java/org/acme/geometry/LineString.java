@@ -3,7 +3,7 @@ package org.acme.geometry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineString implements Geometry {
+public class LineString implements Geometry, Cloneable {
 	
 	private List<Point> points;
 	
@@ -46,13 +46,14 @@ public class LineString implements Geometry {
 	
 	
 	@Override
-	public Geometry clone() {
+	public LineString clone() {
+		LineString copy = null;
 		try {
-			Geometry clone = (LineString)super.clone();
-			return clone;
+			copy = (LineString)super.clone();
 		} catch (CloneNotSupportedException e) {
-			return null;
 		}
+		copy.points=points;
+		return copy;
 		
 	}
 }

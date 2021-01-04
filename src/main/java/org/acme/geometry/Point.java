@@ -1,6 +1,6 @@
 package org.acme.geometry;
 
-public class Point implements Geometry {
+public class Point implements Geometry, Cloneable {
 	
 	private Coordinate coordinate;
 	
@@ -34,13 +34,15 @@ public class Point implements Geometry {
 	
 	
 	@Override
-	public Geometry clone() {
+	public Point clone() {
+		Point copy = null;
 		try {
-			Geometry clone = (Point)super.clone();
-			return clone;
+			copy = (Point)super.clone();
 		} catch (CloneNotSupportedException e) {
-			return null;
+			
 		}
+		copy.coordinate = coordinate;
+		return copy;
 		
 	}
 
