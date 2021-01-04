@@ -14,8 +14,8 @@ public class PointTest {
 	@Test
 	public void testPoint() {
 		Point p = new Point();
-		Assert.assertEquals(p.getCoordinate().getX(), 0.0,EPSILON);
-		Assert.assertEquals(p.getCoordinate().getY(), 0.0,EPSILON);
+		Assert.assertEquals(Double.NaN, p.getCoordinate().getX(),EPSILON);
+		Assert.assertEquals(Double.NaN, p.getCoordinate().getY(),EPSILON);
 		
 	}
 
@@ -23,8 +23,8 @@ public class PointTest {
 	public void testPointCoordinate() {
 		Coordinate c = new Coordinate();
 		Point p = new Point(c);
-		Assert.assertEquals(p.getCoordinate().getX(), 0.0,EPSILON);
-		Assert.assertEquals(p.getCoordinate().getY(), 0.0,EPSILON);
+		Assert.assertEquals(Double.NaN, p.getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(Double.NaN, p.getCoordinate().getY(), EPSILON);
 		
 				
 	}

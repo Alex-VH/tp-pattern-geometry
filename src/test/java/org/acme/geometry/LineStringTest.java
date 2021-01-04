@@ -27,8 +27,8 @@ public class LineStringTest {
 		points.add(p);
 		LineString l = new LineString(points);
 		assertEquals(1,l.getNumPoints());
-		assertEquals(0.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
-		assertEquals(0.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
+		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getX(),EPSILON);
+		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getY(),EPSILON);
 	}
 
 	@Test
@@ -43,8 +43,8 @@ public class LineStringTest {
 		List<Point> points = new ArrayList<Point>();
 		points.add(p);
 		LineString l = new LineString(points);
-		assertEquals(0.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
-		assertEquals(0.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
+		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getX(),EPSILON);
+		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getY(),EPSILON);
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class LineStringTest {
 		assertEquals(1,l.getNumPoints());
 	}
 	
-	@Test
+//	@Test
 //	public void testGetPointNEmptyList() {
 //		LineString l = new LineString();
 //		assertEquals(null,l.getPointN(0));
