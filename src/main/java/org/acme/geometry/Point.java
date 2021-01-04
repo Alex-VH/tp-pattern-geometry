@@ -25,5 +25,11 @@ public class Point implements Geometry {
 	public boolean isEmpty() {
 		return this.coordinate.isEmpty();
 	}
+	
+	@Override
+	public void translate(double x, double y) {
+		this.coordinate.setX(this.coordinate.getX() + x);
+		this.coordinate.setY(this.coordinate.getY() + y);
+	}
 
 }
