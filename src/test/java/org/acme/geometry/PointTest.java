@@ -49,13 +49,13 @@ public class PointTest {
 	public void testClone() {
 		Coordinate c = new Coordinate(0.0,0.0);
 		Point p = new Point(c);
-		Geometry copy = p.clone();
+		Point copy = p.clone();
 		copy.translate(1.0, 1.0);
 		
 		Assert.assertEquals(0.0,p.getCoordinate().getX(),EPSILON);
 		Assert.assertEquals(0.0,p.getCoordinate().getY(),EPSILON);
-//		Assert.assertEquals(1.0,copy.getCoordinate().getY(),EPSILON);
-//		Assert.assertEquals(1.0,copy.getCoordinate().getY(),EPSILON);
+		Assert.assertEquals(1.0,copy.getCoordinate().getY(),EPSILON);
+		Assert.assertEquals(1.0,copy.getCoordinate().getY(),EPSILON);
 		
 		
 	}
