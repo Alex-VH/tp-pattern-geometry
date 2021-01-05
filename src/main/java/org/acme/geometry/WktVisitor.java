@@ -20,52 +20,52 @@ public class WktVisitor implements GeometryVisitor {
 
 	@Override
 	public void visit(Point point) {
-		this.write(this.buffer,point);
+		this.write(point);
 	}
 
 	@Override
 	public void visit(LineString lineString) {
-		this.write(this.buffer,lineString);
+		this.write(lineString);
 	}
 	
 	
-	private void write(StringBuilder s, Coordinate c) {
+	private void write(Coordinate c) {
 		if(c.isEmpty()) {
 			return;
 		}
-		s.append(c.getX());
-		s.append(" ");
-		s.append(c.getY());
+		this.buffer.append(c.getX());
+		this.buffer.append(" ");
+		this.buffer.append(c.getY());
 	}
 	
-	private void write(StringBuilder s, Point p) {
-		s.append("POINT");
+	private void write(Point p) {
+		this.buffer.append("POINT");
 		if(p.isEmpty()) {
-			s.append(" EMPTY");
+			this.buffer.append(" EMPTY");
 			return;
 		}
 		
-		s.append("(");
-		this.write(s, p.getCoordinate());
-		s.append(")");
+		this.buffer.append("(");
+		this.write(p.getCoordinate());
+		this.buffer.append(")");
 			
 	}
 	
 	
-	private void write(StringBuilder s, LineString l) {
-		s.append("LINESTRING");
+	private void write(LineString l) {
+		this.buffer.append("LINESTRING");
 		if(l.isEmpty()) {
-			s.append(" EMPTY");
+			this.buffer.append(" EMPTY");
 			return;
 		}
-		s.append("(");
+		this.buffer.append("(");
 		for(int i = 0; i < l.getNumPoints(); i++) {
-			this.write(s,l.getPointN(i).getCoordinate());
+			this.write(l.getPointN(i).getCoordinate());
 			if (i < l.getNumPoints() -1) {
-				s.append(",");
+				this.buffer.append(",");
 			}
 		}
-		s.append(")");
+		this.buffer.append(")");
 		
 	}
 
