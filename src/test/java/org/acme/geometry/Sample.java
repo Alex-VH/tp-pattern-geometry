@@ -43,4 +43,12 @@ public class Sample {
 		return l;
 	}
 
+	
+	public static Enveloppe enveloppeEmpty() {
+		return new Enveloppe();
+	}
+	
+	public static Enveloppe enveloppe0A() {
+		return new Enveloppe(coordinate0(),coordinateA());
+	}
 }
