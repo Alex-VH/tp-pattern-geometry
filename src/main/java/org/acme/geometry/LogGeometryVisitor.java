@@ -12,7 +12,7 @@ public class LogGeometryVisitor implements GeometryVisitor {
 	}
 	
 	public LogGeometryVisitor(PrintStream out) {
-		this.out =out;
+		this.out = out;
 	}
 	
 
