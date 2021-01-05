@@ -6,7 +6,10 @@ import org.junit.Test;
 
 public class WktVisitorTest {
 
-
+	
+	/**
+	 * Teste si le formatage en Wkt a fonctionné
+	 */
 	@Test
 	public void testGetResult() {
 		WktVisitor visitor = new WktVisitor();
@@ -19,5 +22,4 @@ public class WktVisitorTest {
 		geometry2.accept(visitor2);
 		assertEquals("LINESTRING(0.0 0.0,3.0 5.0)", visitor2.getResult());
 	}
-
 }

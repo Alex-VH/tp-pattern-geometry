@@ -9,6 +9,10 @@ public class AbstractGeometryTest {
 
 	public static final double EPSILON = 1.0e-15;
 	
+	
+	/**
+	 * Teste si l'affichage au format WKT fonctionne
+	 */
 	@Test
 	public void testAsText() {
 		AbstractGeometry geometry = Sample.pointA();
@@ -18,8 +22,13 @@ public class AbstractGeometryTest {
 		assertEquals("LINESTRING(0.0 0.0,3.0 5.0)", geometry2.asText());
 	}
 	
+	
+	/**
+	 * Teste si l'enveloppe des geometries point et ligne est correcte
+	 */
+	@Test
 	public void testGetEnveloppe() {
-		AbstractGeometry geometry = Sample.pointA();
+		AbstractGeometry geometry = Sample.point0();
 		Enveloppe e = geometry.getEnveloppe();
 		
 		Assert.assertEquals(0.0,e.getXmin(), EPSILON);

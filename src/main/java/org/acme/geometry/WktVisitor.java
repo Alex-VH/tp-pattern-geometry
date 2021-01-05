@@ -5,14 +5,28 @@ public class WktVisitor implements GeometryVisitor {
 	private StringBuilder buffer;
 	
 	
+	/**
+	 * Constructeur vide de la classe
+	 */
 	public WktVisitor() {
 		this.buffer = new StringBuilder();
 	}
 	
+	
+	/**
+	 * Constructeur prenant en paramètre un buffer de caractères
+	 * @param buffer
+	 */
 	public WktVisitor(StringBuilder buffer) {
 		this.buffer = buffer;
 	}
 	
+	
+	/**
+	 * Renvoie le résultat de la conversion de l'affichage de la 
+	 * géométrie au format WKT
+	 * @return
+	 */
 	public String getResult() {
 		return this.buffer.toString();
 	}
@@ -23,12 +37,19 @@ public class WktVisitor implements GeometryVisitor {
 		this.write(point);
 	}
 
+	
 	@Override
 	public void visit(LineString lineString) {
 		this.write(lineString);
 	}
 	
 	
+	
+	/**
+	 * Méthode permettant de convertir l'affichage d'une coordonnée au 
+	 * format WKT
+	 * @param c
+	 */
 	private void write(Coordinate c) {
 		if(c.isEmpty()) {
 			return;
@@ -38,6 +59,12 @@ public class WktVisitor implements GeometryVisitor {
 		this.buffer.append(c.getY());
 	}
 	
+	
+	/**
+	 * Méthode permettant de convertir l'affichage d'un point au 
+	 * format WKT
+	 * @param p
+	 */
 	private void write(Point p) {
 		this.buffer.append("POINT");
 		if(p.isEmpty()) {
@@ -52,6 +79,11 @@ public class WktVisitor implements GeometryVisitor {
 	}
 	
 	
+	/**
+	 * Méthode permettant de convertir l'affichage d'une polyligne au 
+	 * format WKT
+	 * @param l
+	 */
 	private void write(LineString l) {
 		this.buffer.append("LINESTRING");
 		if(l.isEmpty()) {
@@ -66,7 +98,6 @@ public class WktVisitor implements GeometryVisitor {
 			}
 		}
 		this.buffer.append(")");
-		
 	}
 
 }

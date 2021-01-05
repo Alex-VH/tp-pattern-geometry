@@ -1,13 +1,16 @@
 package org.acme.geometry;
 
-import static org.junit.Assert.*;
+
 
 import org.junit.Test;
-
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class WktWriterTest {
 
+	
+	/**
+	 * Test si le formatage en Wkt a focntionné
+	 */
 	@Test
 	public void testWrite() {
 		WktWriter writer = new WktWriter();
@@ -23,10 +26,10 @@ public class WktWriterTest {
 		LineString l2 = Sample.LineString0A();
 		String sl2 = writer.write(l2);
 
-		assertEquals("POINT EMPTY", sp);
-		assertEquals("POINT(3.0 5.0)", sp2);
-		assertEquals("LINESTRING EMPTY", sl);
-		assertEquals("LINESTRING(0.0 0.0,3.0 5.0)", sl2);
+		Assert.assertEquals("POINT EMPTY", sp);
+		Assert.assertEquals("POINT(3.0 5.0)", sp2);
+		Assert.assertEquals("LINESTRING EMPTY", sl);
+		Assert.assertEquals("LINESTRING(0.0 0.0,3.0 5.0)", sl2);
 		
 	}
 

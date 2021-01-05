@@ -7,21 +7,40 @@ public class LineString extends AbstractGeometry {
 	
 	private List<Point> points;
 	
+	
+	/**
+	 * Constructeur vide de la classe
+	 */
 	public LineString(){
 		this.points = new ArrayList<Point>();
 	}
 	
 	
+	/**
+	 * Constructeur prenant en parametre la liste des point s de la polyligne
+	 * @param points
+	 */
 	public LineString(List<Point> points) {
 		this.points = points;
 	}
 	
+	
+	/**
+	 * Renvoie le nombre de points de la liste de points en attribut
+	 * @return
+	 */
 	public int getNumPoints() {
 		return this.points.size();
 	}
 	
 	
+	/**
+	 * Renvoie le point numéro N de la liste de point en attribut
+	 * @param n
+	 * @return
+	 */
 	public Point getPointN(int n) {
+		assert this.getNumPoints() > n : "Indice incorrect";
 		return this.points.get(n);
 	}
 	
@@ -31,6 +50,7 @@ public class LineString extends AbstractGeometry {
 		return "LineString";
 	}
 	
+	
 	@Override
 	public boolean isEmpty() {
 		return this.points.isEmpty();
@@ -38,10 +58,12 @@ public class LineString extends AbstractGeometry {
 
 	
 	@Override
-	public void translate(double x, double y) {
+	public void translate(double dx, double dy) {
 		for(int i = 0; i < this.points.size(); i++) {
-			this.points.get(i).translate(x, y);
+			this.points.get(i).translate(dx, dy);
 		}
+		
+//		On previent que les coordonnées ont changé
 		this.triggerChange();
 	}
 	
@@ -57,6 +79,7 @@ public class LineString extends AbstractGeometry {
 	
 	}
 	
+	
 	@Override
 	public Enveloppe getEnveloppe() {
 		EnveloppeBuilder builder = new EnveloppeBuilder();
@@ -66,9 +89,9 @@ public class LineString extends AbstractGeometry {
 		return builder.build();
 	}
 	
+	
 	@Override
 	public void accept(GeometryVisitor visitor){
 		visitor.visit(this);
 	}
-
 }

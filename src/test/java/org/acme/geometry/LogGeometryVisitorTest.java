@@ -1,19 +1,20 @@
 package org.acme.geometry;
 
-import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
 
 public class LogGeometryVisitorTest {
 
 	
-   
+	/**
+	 * Teste si l'affichage des logs d'un point est bon
+	 * @throws UnsupportedEncodingException
+	 */
 	@Test
 	public void testVisitPoint() throws UnsupportedEncodingException {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -27,6 +28,11 @@ public class LogGeometryVisitorTest {
 		Assert.assertEquals("Je suis un point avec x=3.0 et y =5.0",result);
 	}
 
+	
+	/**
+	 * Teste si l'affichage des logs d'une polyligne est bon
+	 * @throws UnsupportedEncodingException
+	 */
 	@Test
 	public void testVisitLineString() throws UnsupportedEncodingException {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();

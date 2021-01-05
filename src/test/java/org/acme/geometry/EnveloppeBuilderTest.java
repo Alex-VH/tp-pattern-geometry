@@ -1,6 +1,5 @@
 package org.acme.geometry;
 
-import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +8,10 @@ public class EnveloppeBuilderTest {
 	
 	public static final double EPSILON = 1.0e-15;
 
+	
+	/**
+	 * Teste si l'insertion de la coordonnée et donc la maj de l'enveloppe se fait bien
+	 */
 	@Test
 	public void testInsert() {
 		EnveloppeBuilder builder = new EnveloppeBuilder();
@@ -19,10 +22,12 @@ public class EnveloppeBuilderTest {
 		Assert.assertEquals(0.0,builder.enveloppe.getYmin(), EPSILON);
 		Assert.assertEquals(3.0,builder.enveloppe.getXmax(), EPSILON);
 		Assert.assertEquals(5.0,builder.enveloppe.getYmax(), EPSILON);
-		
-
 	}
 
+	
+	/**
+	 * Teste si la construction de l'enveloppe à l'aide du builder fonctionne
+	 */
 	@Test
 	public void testBuild() {
 		EnveloppeBuilder builder = new EnveloppeBuilder();
@@ -36,5 +41,4 @@ public class EnveloppeBuilderTest {
 		Assert.assertEquals(3.0,e.getXmax(), EPSILON);
 		Assert.assertEquals(5.0,e.getYmax(), EPSILON);
 	}
-
 }

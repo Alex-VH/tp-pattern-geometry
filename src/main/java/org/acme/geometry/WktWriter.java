@@ -4,6 +4,12 @@ public class WktWriter {
 	
 	public WktWriter() {}
 	
+	
+	/**
+	 * Méthode permettant d'afficher une géométrie au format WKT
+	 * @param geometry
+	 * @return
+	 */
 	public String write(Geometry geometry) {
 		String s = "";
 
