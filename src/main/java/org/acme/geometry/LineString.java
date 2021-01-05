@@ -53,7 +53,7 @@ public class LineString implements Geometry, Cloneable {
 			newPoints.add(this.getPointN(i).clone());
 		}
 		return new LineString(newPoints);
-		
+	
 	}
 	
 	@Override
