@@ -89,9 +89,18 @@ public class LineStringTest {
 		Assert.assertEquals(3.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
 		Assert.assertEquals(5.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
 		Assert.assertEquals(3.0,copy.getPointN(0).getCoordinate().getX(),EPSILON);
-		Assert.assertEquals(5.0,copy.getPointN(0).getCoordinate().getY(),EPSILON);
+		Assert.assertEquals(5.0,copy.getPointN(0).getCoordinate().getY(),EPSILON);	
+	}
+	
+	@Test
+	public void testGetEnveloppe() {
+		LineString l = Sample.LineString0A();
+		Enveloppe e = l.getEnveloppe();
 		
-		
+		Assert.assertEquals(0.0, e.getXmin(),EPSILON);
+		Assert.assertEquals(3.0, e.getXmax(),EPSILON);
+		Assert.assertEquals(0.0, e.getYmin(),EPSILON);
+		Assert.assertEquals(5.0, e.getYmax(),EPSILON);
 	}
 
 }

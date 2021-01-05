@@ -58,4 +58,15 @@ public class PointTest {
 		Assert.assertSame(p.getCoordinate(), copy.getCoordinate());
 				
 	}
+	
+	@Test
+	public void testGetEnveloppe() {
+		Point p = Sample.pointA();
+		Enveloppe e = p.getEnveloppe();
+		
+		Assert.assertEquals(3.0, e.getXmin(),EPSILON);
+		Assert.assertEquals(3.0, e.getXmax(),EPSILON);
+		Assert.assertEquals(5.0, e.getYmin(),EPSILON);
+		Assert.assertEquals(5.0, e.getYmax(),EPSILON);
+	}
 }

@@ -43,6 +43,13 @@ public class Sample {
 		return l;
 	}
 
+	public static LineString LineString0A() {
+		List<Point> points = new ArrayList<Point>();
+		points.add(point0());
+		points.add(pointA());
+		LineString l = new LineString(points);
+		return l;
+	}
 	
 	public static Enveloppe enveloppeEmpty() {
 		return new Enveloppe();

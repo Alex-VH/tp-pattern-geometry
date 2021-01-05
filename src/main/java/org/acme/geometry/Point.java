@@ -36,7 +36,13 @@ public class Point implements Geometry, Cloneable {
 	
 	@Override
 	public Point clone() {
-		return new Point(this.coordinate);		
+		return new Point(this.coordinate);	
 	}
 
+	@Override
+	public Enveloppe getEnveloppe() {
+		EnveloppeBuilder builder = new EnveloppeBuilder();
+		builder.insert(this.coordinate);
+		return builder.build();
+	}
 }
