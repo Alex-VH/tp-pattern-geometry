@@ -64,4 +64,9 @@ public class LineString implements Geometry, Cloneable {
 		}
 		return builder.build();
 	}
+	
+	@Override
+	public void accept(GeometryVisitor visitor){
+		visitor.visit(this);
+	}
 }
