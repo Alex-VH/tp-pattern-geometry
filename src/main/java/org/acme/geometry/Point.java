@@ -1,6 +1,6 @@
 package org.acme.geometry;
 
-public class Point implements Geometry, Cloneable {
+public class Point extends AbstractGeometry implements Cloneable {
 	
 	private Coordinate coordinate;
 	

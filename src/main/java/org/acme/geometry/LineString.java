@@ -3,7 +3,7 @@ package org.acme.geometry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineString implements Geometry, Cloneable {
+public class LineString extends AbstractGeometry implements Cloneable {
 	
 	private List<Point> points;
 	
