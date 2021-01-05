@@ -31,6 +31,7 @@ public class Point extends AbstractGeometry {
 		this.coordinate = new Coordinate(
 				(this.coordinate.getX() + x),
 				(this.coordinate.getY() + y));
+		this.triggerChange();
 	}
 	
 	
@@ -50,4 +51,8 @@ public class Point extends AbstractGeometry {
 	public void accept(GeometryVisitor visitor) {
 		visitor.visit(this);
 	}
+
+	
+	
+
 }
