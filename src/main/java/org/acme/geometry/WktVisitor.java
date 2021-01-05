@@ -20,34 +20,53 @@ public class WktVisitor implements GeometryVisitor {
 
 	@Override
 	public void visit(Point point) {
-		String s = "POINT";
-		if(point.isEmpty()) {
-			s += " EMPTY";
-		}
-		else {
-			s = s + "("+ point.getCoordinate().getX() + " " + point.getCoordinate().getY() + ")";
-		}
-		this.buffer = new StringBuilder(s);
+		this.write(this.buffer,point);
 	}
 
 	@Override
 	public void visit(LineString lineString) {
-		String s = "LINESTRING";
-		if(lineString.isEmpty()) {
-			s += " EMPTY";
+		this.write(this.buffer,lineString);
+	}
+	
+	
+	private void write(StringBuilder s, Coordinate c) {
+		if(c.isEmpty()) {
+			return;
 		}
-		else {
-			s += "(";
-			for(int i = 0; i < lineString.getNumPoints(); i++) {
-				s = s + lineString.getPointN(i).getCoordinate().getX() + " " + lineString.getPointN(i).getCoordinate().getY();
-				if (i < lineString.getNumPoints() -1) {
-					s += ",";
-				}
+		s.append(c.getX());
+		s.append(" ");
+		s.append(c.getY());
+	}
+	
+	private void write(StringBuilder s, Point p) {
+		s.append("POINT");
+		if(p.isEmpty()) {
+			s.append(" EMPTY");
+			return;
+		}
+		
+		s.append("(");
+		this.write(s, p.getCoordinate());
+		s.append(")");
+			
+	}
+	
+	
+	private void write(StringBuilder s, LineString l) {
+		s.append("LINESTRING");
+		if(l.isEmpty()) {
+			s.append(" EMPTY");
+			return;
+		}
+		s.append("(");
+		for(int i = 0; i < l.getNumPoints(); i++) {
+			this.write(s,l.getPointN(i).getCoordinate());
+			if (i < l.getNumPoints() -1) {
+				s.append(",");
 			}
-			s += ")";
 		}
-		this.buffer = new StringBuilder(s);
-
+		s.append(")");
+		
 	}
 
 }
