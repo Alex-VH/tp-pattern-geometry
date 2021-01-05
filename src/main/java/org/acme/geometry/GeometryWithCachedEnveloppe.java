@@ -41,7 +41,7 @@ public class GeometryWithCachedEnveloppe implements Geometry, GeometryListener {
 
 	@Override
 	public void accept(GeometryVisitor visitor) {
-		this.accept(visitor);
+		this.original.accept(visitor);
 		
 	}
 
@@ -53,5 +53,11 @@ public class GeometryWithCachedEnveloppe implements Geometry, GeometryListener {
 	@Override
 	public void addListener(GeometryListener listener) {
 		this.original.addListener(listener);
+	}
+
+
+	@Override
+	public String asText() {
+		return this.original.asText();
 	}
 }
