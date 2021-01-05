@@ -21,5 +21,11 @@ public class CoordinateTest {
 		Assert.assertEquals(4.0, c.getX(), EPSILON);
 		Assert.assertEquals(5.0, c.getY(), EPSILON);
 	}
+	
+	@Test
+	public void testIsEmpty() {
+		Coordinate c = new Coordinate();
+		Assert.assertEquals(true, c.isEmpty());
+	}
 
 }

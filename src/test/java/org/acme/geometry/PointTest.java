@@ -21,10 +21,9 @@ public class PointTest {
 
 	@Test
 	public void testPointCoordinate() {
-		Coordinate c = new Coordinate();
-		Point p = new Point(c);
-		Assert.assertEquals(Double.NaN, p.getCoordinate().getX(), EPSILON);
-		Assert.assertEquals(Double.NaN, p.getCoordinate().getY(), EPSILON);
+		Point p = Sample.pointA();
+		Assert.assertEquals(3.0, p.getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(5.0, p.getCoordinate().getY(), EPSILON);
 		
 				
 	}
@@ -35,11 +34,16 @@ public class PointTest {
 		Assert.assertEquals("Point",p.getType());
 	}
 	
+	@Test
+	public void testEmpty() {
+		Point p = new Point(new Coordinate());
+		Assert.assertEquals(true, p.isEmpty());
+	}
+	
 	
 	@Test
 	public void testTranslate() {
-		Coordinate c = new Coordinate(0.0,0.0);
-		Point p = new Point(c);
+		Point p = Sample.point0();
 		p.translate(1.0, 1.0);
 		Assert.assertEquals(1.0,p.getCoordinate().getY(),EPSILON);
 		Assert.assertEquals(1.0,p.getCoordinate().getY(),EPSILON);
@@ -47,16 +51,11 @@ public class PointTest {
 
 	@Test
 	public void testClone() {
-		Coordinate c = new Coordinate(0.0,0.0);
-		Point p = new Point(c);
+		Point p = Sample.point0();
 		Point copy = p.clone();
-		copy.translate(1.0, 1.0);
 		
-		Assert.assertEquals(0.0,p.getCoordinate().getX(),EPSILON);
-		Assert.assertEquals(0.0,p.getCoordinate().getY(),EPSILON);
-		Assert.assertEquals(1.0,copy.getCoordinate().getY(),EPSILON);
-		Assert.assertEquals(1.0,copy.getCoordinate().getY(),EPSILON);
-		
-		
+		Assert.assertNotSame(p, copy);
+		Assert.assertSame(p.getCoordinate(), copy.getCoordinate());
+				
 	}
 }

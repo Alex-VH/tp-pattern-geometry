@@ -22,13 +22,11 @@ public class LineStringTest {
 
 	@Test
 	public void testLineStringListOfPoint() {
-		Point p = new Point();
-		List<Point> points = new ArrayList<Point>();
-		points.add(p);
-		LineString l = new LineString(points);
+		LineString l = Sample.LineStringA();
+		
 		assertEquals(1,l.getNumPoints());
-		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getX(),EPSILON);
-		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getY(),EPSILON);
+		assertEquals(3.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
+		assertEquals(5.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
 	}
 
 	@Test
@@ -39,21 +37,16 @@ public class LineStringTest {
 	
 	@Test
 	public void testGetNumPointsNotEmptyList() {
-		Point p = new Point();
-		List<Point> points = new ArrayList<Point>();
-		points.add(p);
-		LineString l = new LineString(points);
-		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getX(),EPSILON);
-		assertEquals(Double.NaN,l.getPointN(0).getCoordinate().getY(),EPSILON);
+		LineString l = Sample.LineStringA();
+		assertNotEquals(0,l.getNumPoints());
+		assertEquals(1,l.getNumPoints());
 	}
 
 	@Test
 	public void testGetPointNNotEmptyList() {
-		Point p = new Point();
-		List<Point> points = new ArrayList<Point>();
-		points.add(p);
-		LineString l = new LineString(points);
-		assertEquals(1,l.getNumPoints());
+		LineString l = Sample.LineStringA();
+		assertEquals(3.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
+		assertEquals(5.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
 	}
 	
 //	@Test
@@ -70,32 +63,33 @@ public class LineStringTest {
 	
 	
 	@Test
+	public void testIsEmpty() {
+		LineString l = Sample.lineStringEmpty();
+		
+		Assert.assertEquals(true, l.isEmpty());
+	}
+	
+	
+	@Test
 	public void testTranslate() {
-		Coordinate c = new Coordinate(0.0,0.0);
-		Point p = new Point(c);
-		List<Point> points = new ArrayList<Point>();
-		points.add(p);
-		LineString l = new LineString(points);
+		LineString l = Sample.LineStringA();
 		l.translate(1.0, 1.0);
-		Assert.assertEquals(1.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
-		Assert.assertEquals(1.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
+		Assert.assertEquals(4.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
+		Assert.assertEquals(6.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
 	}
 	
 	
 	@Test
 	public void testClone() {
-		Coordinate c = new Coordinate(0.0,0.0);
-		Point p = new Point(c);
-		List<Point> points = new ArrayList<Point>();
-		points.add(p);
-		LineString l = new LineString(points);
+		LineString l = Sample.LineStringA();
 		LineString copy = l.clone();
-		copy.translate(1.0, 1.0);
 		
-		Assert.assertEquals(0.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
-		Assert.assertEquals(0.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
-		Assert.assertEquals(1.0,copy.getPointN(0).getCoordinate().getY(),EPSILON);
-		Assert.assertEquals(1.0,copy.getPointN(0).getCoordinate().getY(),EPSILON);
+		
+		Assert.assertNotSame(l.getPointN(0),copy.getPointN(0));
+		Assert.assertEquals(3.0,l.getPointN(0).getCoordinate().getX(),EPSILON);
+		Assert.assertEquals(5.0,l.getPointN(0).getCoordinate().getY(),EPSILON);
+		Assert.assertEquals(3.0,copy.getPointN(0).getCoordinate().getX(),EPSILON);
+		Assert.assertEquals(5.0,copy.getPointN(0).getCoordinate().getY(),EPSILON);
 		
 		
 	}

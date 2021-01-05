@@ -47,19 +47,12 @@ public class LineString implements Geometry, Cloneable {
 	
 	@Override
 	public LineString clone() {
-		LineString copy = null;
-		try {
-			copy = (LineString)super.clone();
-		} catch (CloneNotSupportedException e) {
-		}
 		
-		copy.points = new ArrayList<Point>();
+		List<Point> newPoints = new ArrayList<Point>(getNumPoints());
 		for(int i = 0; i < this.points.size(); i++) {
-			copy.points.add(this.getPointN(i).clone());
+			newPoints.add(this.getPointN(i).clone());
 		}
-		
-
-		return copy;
+		return new LineString(newPoints);
 		
 	}
 }

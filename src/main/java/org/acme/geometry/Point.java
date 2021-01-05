@@ -36,15 +36,7 @@ public class Point implements Geometry, Cloneable {
 	
 	@Override
 	public Point clone() {
-		Point copy = null;
-		try {
-			copy = (Point)super.clone();
-		} catch (CloneNotSupportedException e) {
-			
-		}
-		copy.coordinate = coordinate;
-		return copy;
-		
+		return new Point(this.coordinate);		
 	}
 
 }
