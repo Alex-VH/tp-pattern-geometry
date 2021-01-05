@@ -20,14 +20,33 @@ public class WktVisitor implements GeometryVisitor {
 
 	@Override
 	public void visit(Point point) {
-		WktWriter writer = new WktWriter();
-		this.buffer = new StringBuilder(writer.write(point));
+		String s = "POINT";
+		if(point.isEmpty()) {
+			s += " EMPTY";
+		}
+		else {
+			s = s + "("+ point.getCoordinate().getX() + " " + point.getCoordinate().getY() + ")";
+		}
+		this.buffer = new StringBuilder(s);
 	}
 
 	@Override
 	public void visit(LineString lineString) {
-		WktWriter writer = new WktWriter();
-		this.buffer = new StringBuilder(writer.write(lineString));
+		String s = "LINESTRING";
+		if(lineString.isEmpty()) {
+			s += " EMPTY";
+		}
+		else {
+			s += "(";
+			for(int i = 0; i < lineString.getNumPoints(); i++) {
+				s = s + lineString.getPointN(i).getCoordinate().getX() + " " + lineString.getPointN(i).getCoordinate().getY();
+				if (i < lineString.getNumPoints() -1) {
+					s += ",";
+				}
+			}
+			s += ")";
+		}
+		this.buffer = new StringBuilder(s);
 
 	}
 
